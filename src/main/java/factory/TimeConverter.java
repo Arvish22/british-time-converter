@@ -1,4 +1,4 @@
-package britishTime;
+package factory;
 
 import britishTime.exceptions.InvalidTimeFormatException;
 

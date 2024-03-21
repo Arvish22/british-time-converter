@@ -1,7 +1,6 @@
-package core;
+package factory;
 
 import britishTime.BritishTimeConverter;
-import britishTime.TimeConverter;
 
 /**
  * Factory class for obtaining instances of TimeConverter based on the provided format.
