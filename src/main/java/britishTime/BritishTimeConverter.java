@@ -1,19 +1,28 @@
 package britishTime;
 
-import java.util.HashMap;
 import britishTime.exceptions.InvalidTimeFormatException;
+import britishTime.interfaces.HourSpoken;
+import britishTime.interfaces.MinuteSpoken;
 import factory.TimeConverter;
 
+/**
+ * A converter class that converts time to spoken form in British English.
+ */
 public class BritishTimeConverter implements TimeConverter {
+    
+    private MinuteSpoken minuteSpoken; // Instance of MinuteSpoken interface for converting minutes
+    private HourSpoken hourSpoken; // Instance of HourSpoken interface for converting hours
 
-	// Array to map minute values to spoken words
-	private static final String[] MINUTES_MAPPINGS = { "one", "two", "three", "four", "five", "six", "seven", "eight",
-			"nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen",
-			"nineteen", "twenty", "twenty one", "twenty two", "twenty three", "twenty four", "twenty five",
-			"twenty six", "twenty seven", "twenty eight", "twenty nine", "thirty" };
-
-	// HashMap to map hour values to spoken words
-	private static final HashMap<Integer, String> HOUR_MAPPINGS = createHourMappings();
+    /**
+     * Constructor for BritishTimeConverter.
+     * 
+     * @param minuteSpoken An implementation of MinuteSpoken interface for converting minutes.
+     * @param hourSpoken An implementation of HourSpoken interface for converting hours.
+     */
+    public BritishTimeConverter(MinuteSpoken minuteSpoken, HourSpoken hourSpoken) {
+        this.minuteSpoken = minuteSpoken;
+        this.hourSpoken = hourSpoken;
+    }
 
 	@Override
 	public String convertToSpokenForm(String inputTime) throws InvalidTimeFormatException {
@@ -45,8 +54,8 @@ public class BritishTimeConverter implements TimeConverter {
 	}
 
 	private String generateSpokenForm(int hour, int minute, boolean hourFirst) {
-		String spokenHour = HOUR_MAPPINGS.get(hour % 12);
-		String spokenMinute = getMinuteSpoken(minute);
+		String spokenHour = hourSpoken.getHourSpoken(hour % 12);
+		String spokenMinute = minuteSpoken.getMinuteSpoken(minute);
 
 		// uncomment this line of code if period is needed
 		//String period = (hour < 12) ? "am" : "pm";
@@ -69,43 +78,6 @@ public class BritishTimeConverter implements TimeConverter {
 		if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
 			throw new InvalidTimeFormatException(
 					"Invalid time format. " + "Hour must be between 0 and 23, and minute must be between 0 and 59.");
-		}
-	}
-
-	// Helper method to create hour mappings
-	private static HashMap<Integer, String> createHourMappings() {
-		HashMap<Integer, String> hourMappings = new HashMap<>();
-		hourMappings.put(1, "one");
-		hourMappings.put(2, "two");
-		hourMappings.put(3, "three");
-		hourMappings.put(4, "four");
-		hourMappings.put(5, "five");
-		hourMappings.put(6, "six");
-		hourMappings.put(7, "seven");
-		hourMappings.put(8, "eight");
-		hourMappings.put(9, "nine");
-		hourMappings.put(10, "ten");
-		hourMappings.put(11, "eleven");
-		hourMappings.put(0, "twelve");
-		return hourMappings;
-	}
-
-	// Helper method to get spoken minute
-	public String getMinuteSpoken(int minute) {
-		if (minute == 0) {
-			return "o'clock";
-		} else if (minute == 15) {
-			return "quarter past";
-		} else if (minute == 30) {
-			return "half past";
-		} else if (minute == 45) {
-			return "quarter to";
-		} else if (minute < 30) {
-			return MINUTES_MAPPINGS[minute - 1] + " past";
-		} else if (minute > 30 && minute < 35) {
-			return MINUTES_MAPPINGS[(minute - (minute % 30)) - 1] + " " + MINUTES_MAPPINGS[(minute % 30)-1];
-		} else {
-			return MINUTES_MAPPINGS[60 % (minute + 1)] + " to";
 		}
 	}
 }

@@ -1,6 +1,8 @@
 package factory;
 
 import britishTime.BritishTimeConverter;
+import britishTime.impl.HourSpokenImpl;
+import britishTime.impl.MinuteSpokenImpl;
 
 /**
  * Factory class for obtaining instances of TimeConverter based on the provided format.
@@ -16,7 +18,7 @@ public class TimeConverterFactory {
      */
     public static TimeConverter getTimeConverter(String format) {
         if ("British".equalsIgnoreCase(format)) {
-            return new BritishTimeConverter();
+            return new BritishTimeConverter(new MinuteSpokenImpl(),new HourSpokenImpl());
         } else {
             throw new IllegalArgumentException("Unsupported format: " + format);
         }

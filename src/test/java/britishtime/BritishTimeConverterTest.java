@@ -5,12 +5,14 @@ import org.junit.Test;
 
 import britishTime.BritishTimeConverter;
 import britishTime.exceptions.InvalidTimeFormatException;
+import britishTime.impl.HourSpokenImpl;
+import britishTime.impl.MinuteSpokenImpl;
 
 public class BritishTimeConverterTest {
 
 	@Test
 	public void testValidInputTime() {
-	    BritishTimeConverter converter = new BritishTimeConverter();
+	    BritishTimeConverter converter = new BritishTimeConverter(new MinuteSpokenImpl(),new HourSpokenImpl());
 
 	    try {
 	        assertEquals("one o'clock", converter.convertToSpokenForm("1:00"));
@@ -36,13 +38,13 @@ public class BritishTimeConverterTest {
 
     @Test(expected = InvalidTimeFormatException.class)
     public void testInvalidInputTime() throws InvalidTimeFormatException {
-        BritishTimeConverter converter = new BritishTimeConverter();
+        BritishTimeConverter converter = new BritishTimeConverter(new MinuteSpokenImpl(),new HourSpokenImpl());
         converter.convertToSpokenForm("25:00"); // Invalid hour
     }
 
     @Test
     public void testCornerCases() {
-        BritishTimeConverter converter = new BritishTimeConverter();
+        BritishTimeConverter converter = new BritishTimeConverter(new MinuteSpokenImpl(),new HourSpokenImpl());
 
         try {
             assertEquals("midnight", converter.convertToSpokenForm("00:00"));
