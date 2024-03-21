@@ -59,21 +59,23 @@ public class BritishTimeConverter implements TimeConverter {
 
     // Helper method to get spoken minute
     public String getMinuteSpoken(int minute) {
-        if (minute == 0) {
-            return "o'clock";
-        } else if (minute == 15) {
+        if (minute == 15) {
             return "quarter";
         } else if (minute == 30) {
             return "half";
         } else if (minute == 45) {
             return "three quarters";
-        } else if (minute < 30) {
-            return "past " + getHourSpoken(minute);
         } else {
-            return "to " + getHourSpoken(60 - minute);
+            String[] tens = {"twenty", "thirty", "forty", "fifty"};
+            if (minute < 20) {
+                return getHourSpoken(minute);
+            } else {
+                int tensDigit = minute / 10 - 2;
+                int unitsDigit = minute % 10;
+                return tens[tensDigit] + (unitsDigit >= 0 ? " " + getHourSpoken(unitsDigit) : "");
+            }
         }
     }
-
     // Helper method to get spoken hour
     public String getHourSpoken(int hour) {
         HashMap<Integer, String> hourMappings = createHourMappings();
