@@ -1,8 +1,8 @@
-package factory;
+package application.factory;
 
-import britishTime.BritishTimeConverter;
-import britishTime.impl.HourSpokenImpl;
-import britishTime.impl.MinuteSpokenImpl;
+import application.britishTime.BritishTimeConverter;
+import application.britishTime.Impl.HourSpokenImpl;
+import application.britishTime.Impl.MinuteSpokenImpl;
 
 /**
  * Factory class for obtaining instances of TimeConverter based on the provided format.

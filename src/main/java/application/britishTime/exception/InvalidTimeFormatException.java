@@ -1,4 +1,4 @@
-package britishTime.exceptions;
+package application.britishTime.exception;
 
 public class InvalidTimeFormatException extends Exception {
     /**

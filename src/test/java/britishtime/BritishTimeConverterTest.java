@@ -3,10 +3,10 @@ package britishtime;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-import britishTime.BritishTimeConverter;
-import britishTime.exceptions.InvalidTimeFormatException;
-import britishTime.impl.HourSpokenImpl;
-import britishTime.impl.MinuteSpokenImpl;
+import application.britishTime.BritishTimeConverter;
+import application.britishTime.Impl.HourSpokenImpl;
+import application.britishTime.Impl.MinuteSpokenImpl;
+import application.britishTime.exception.InvalidTimeFormatException;
 
 public class BritishTimeConverterTest {
 

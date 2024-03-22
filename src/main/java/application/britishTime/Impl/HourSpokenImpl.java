@@ -1,7 +1,8 @@
-package britishTime.impl;
+package application.britishTime.Impl;
 
-import britishTime.interfaces.HourSpoken;
 import java.util.HashMap;
+
+import application.britishTime.interfaces.HourSpoken;
 
 /**
  * Implementation class for converting hours to spoken form.

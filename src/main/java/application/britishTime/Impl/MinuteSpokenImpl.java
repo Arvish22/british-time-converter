@@ -1,6 +1,6 @@
-package britishTime.impl;
+package application.britishTime.Impl;
 
-import britishTime.interfaces.MinuteSpoken;
+import application.britishTime.interfaces.MinuteSpoken;
 /**
  * Implementation class for converting minutes to spoken form.
  */

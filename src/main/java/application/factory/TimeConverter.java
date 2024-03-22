@@ -1,6 +1,6 @@
-package factory;
+package application.factory;
 
-import britishTime.exceptions.InvalidTimeFormatException;
+import application.britishTime.exception.InvalidTimeFormatException;
 
 /**
  * Interface defining the contract for converting time to spoken form.

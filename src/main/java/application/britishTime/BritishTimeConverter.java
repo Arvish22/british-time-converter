@@ -1,9 +1,9 @@
-package britishTime;
+package application.britishTime;
 
-import britishTime.exceptions.InvalidTimeFormatException;
-import britishTime.interfaces.HourSpoken;
-import britishTime.interfaces.MinuteSpoken;
-import factory.TimeConverter;
+import application.britishTime.exception.InvalidTimeFormatException;
+import application.britishTime.interfaces.HourSpoken;
+import application.britishTime.interfaces.MinuteSpoken;
+import application.factory.TimeConverter;
 
 /**
  * A converter class that converts time to spoken form in British English.
