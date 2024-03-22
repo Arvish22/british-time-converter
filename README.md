@@ -5,12 +5,19 @@ Project Structure
 The project is structured as follows:
 
 britishTime: Contains the main logic for converting time to spoken form in British English.
+
 BritishTimeConverter: Implements the TimeConverter interface to convert time to spoken form.
+
 exceptions: Contains custom exception classes for handling invalid time formats.
+
 impl: Contains implementations for converting hours and minutes to spoken form.
+
 factory: Contains a factory class for obtaining instances of TimeConverter based on the provided format.
+
 TimeConverterFactory: Provides a method to get a TimeConverter instance.
+
 application: Contains a sample application to demonstrate the usage of the British Time Converter.
+
 Main: Contains the main method to demonstrate conversion of time to spoken form.
 
 ### Usage
